@@ -6,9 +6,13 @@ class Chitter < Sinatra::Base
     register Sinatra::Reloader
   end
 
-  get '/' do
-    'Welcome to Chitter!'  
+  get '/' do 
     erb :index
+  end
+
+  post '/peep' do
+    @message = params[:message]
+    erb :add_peep
   end
 
   run! if app_file == $0
